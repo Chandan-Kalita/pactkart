@@ -2,17 +2,19 @@ import Link from "next/link";
 import Header from "./Header";
 import Sidebar from "./product-list/Sidebar";
 import ProductCard from "./ProductCard/ProductCard";
+import { BACKEND_URL } from "@/lib/config/endpoints";
+import { Product } from "@/lib/config/model";
 
-const ProductListingPage = () => {
+const fetchProducts = async () => {
+  const res = await fetch(`${BACKEND_URL}/products?offset=0&limit=10`);
+  const products = await res.json() as Product[];
+  return products;
+}
 
-  // Sample product data
-  const products = [
-    { id: 1, title: 'Product 1', price: 99.99, category: 'cat 1' },
-    { id: 2, title: 'Product 2', price: 149.99, category: 'cat 2' },
-    { id: 3, title: 'Product 3', price: 199.99, category: 'cat 3' },
-    { id: 4, title: 'Product 4', price: 79.99, category: 'cat 4' },
-    { id: 5, title: 'Product 5', price: 129.99, category: 'cat 1' },
-  ];
+const ProductListingPage =async () => {
+
+  const products = await fetchProducts();
+
 
 
   return (

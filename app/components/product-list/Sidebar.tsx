@@ -1,8 +1,10 @@
+'use client'
+
 export default function Sidebar() {
   const categories = ['cat 1', 'cat 2', 'cat 3', 'cat 4'];
 
     return (
-        <aside className="w-full md:w-64 bg-white rounded-lg shadow-sm p-4">
+        <aside className="w-full h-[100%] md:w-64 bg-white rounded-lg shadow-sm p-4">
         {/* Search */}
         <div className="mb-6">
           <input
@@ -29,7 +31,7 @@ export default function Sidebar() {
         </div>
 
         {/* Price Range */}
-        <div className="space-y-2">
+        <div className="space-y-2 mb-6">
           <input
             type="number"
             placeholder="Price from"
@@ -44,6 +46,11 @@ export default function Sidebar() {
             // onChange={(e) => setPriceTo(e.target.value)}
             className="w-full p-2 border rounded-lg"
           />
+        </div>
+        <div className="">
+        <button className=" w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                Apply filter
+              </button>
         </div>
       </aside>
     )
