@@ -1,15 +1,9 @@
 import { IProduct } from "@/lib/config/model";
+import { checkUrl } from "@/lib/utils/dataSource";
 import Image from "next/image";
 import Link from "next/link";
 
-function checkUrl(url:string){
-    try {
-        const _ = new URL(url)
-        return url
-    } catch (error) {
-        return "https://placehold.co/400x400.png"
-    }
-}
+
 
 export default function ProductCard({ product }: { product: IProduct }) {    
     return (

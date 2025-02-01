@@ -3,36 +3,15 @@ import ProductCard from "./ProductCard/ProductCard";
 import { BACKEND_URL } from "@/lib/config/endpoints";
 import { FilterState, IProduct } from "@/lib/config/model";
 import { Pagination } from "./product-list/Pagination";
+import { fetchProducts } from "@/lib/utils/dataSource";
 
-const fetchProducts = async ({page, category, priceMax, priceMin, searchText}:{page:string, category?:string, priceMax?:string, priceMin?:string, searchText?:string}) => {
-  const queries = new URLSearchParams()
-  queries.append('offset', (( isNaN(Number(page)) ? 0 : Number(page) - 1) * 12).toString())
-  if(searchText){
-    queries.append('title',searchText)
-  }
-  if(category){
-    queries.append('categoryId',category)
-  }
-  if(priceMin){
-    queries.append('price_min',priceMin)
-  }
-  if(priceMax){
-    queries.append('price_max', priceMax)
-  }
 
-  const url = `${BACKEND_URL}/products?limit=12&${queries.toString()}`
-  console.log(url);
-  
-  const res = await fetch(url);
-  const products = await res.json() as IProduct[];
-  return products;
-}
 
 const ProductListingPage =async ({searchParams}:{searchParams:FilterState}) => {
   const {page, category, priceMax, priceMin, searchText} = await searchParams
 
-  const products = await fetchProducts({page: page.toString(), category:category?.toString() || undefined, priceMax: priceMax?.toString()||undefined, priceMin: priceMin?.toString()||undefined, searchText});
-
+  const products = await fetchProducts({page: page?.toString() || '1', category:category?.toString() || undefined, priceMax: priceMax?.toString()||undefined, priceMin: priceMin?.toString()||undefined, searchText});
+  
 
 
   return (

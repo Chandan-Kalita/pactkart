@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Counter } from "./components/counter/Counter";
 import ProductListingPage from "./components/ShoppingGrid";
-import { HomePageSearchParams } from "@/lib/config/model";
 
-export default function HomePage({searchParams}:HomePageSearchParams) {
+export default function HomePage({searchParams}:{searchParams:any}) {
   return       <ProductListingPage searchParams={searchParams}/>  ;
 }
 
