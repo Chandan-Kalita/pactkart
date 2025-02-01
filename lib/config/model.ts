@@ -20,3 +20,8 @@ export interface FilterState {
     priceMin: number
     priceMax: number
 }
+
+export interface ICartItem{
+    productId: number
+    quantity: number
+}

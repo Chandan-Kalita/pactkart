@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { checkUrl, fetchProductById } from '@/lib/utils/dataSource';
 import Image from 'next/image';
 import { SimilarProducts } from '@/app/components/product-description/SimilarProducts';
+import { AddToCartButton } from '@/app/components/cart/AddToCartButton';
 
 
 const ProductPage = async ({params}:{params:any}) => {
@@ -32,12 +33,10 @@ const ProductPage = async ({params}:{params:any}) => {
 
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">{product.title}</h2>
-            <p className="text-2xl font-semibold text-blue-600">{product.price}</p>
+            <p className="text-2xl font-semibold text-blue-600">${product.price}</p>
             <p className="text-gray-600">{product.category.name}</p>
             <p className="text-gray-700">{product.description}</p>
-            <button className="w-full md:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              Add to cart
-            </button>
+              <AddToCartButton productId={product.id}/>
           </div>
         </div>
 
