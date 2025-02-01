@@ -4,10 +4,14 @@ import { checkUrl, fetchProductById } from '@/lib/utils/dataSource';
 import Image from 'next/image';
 import { SimilarProducts } from '@/app/components/product-description/SimilarProducts';
 import { AddToCartButton } from '@/app/components/cart/AddToCartButton';
+import { notFound } from 'next/navigation';
 
 
-const ProductPage = async ({params}:{params:any}) => {
+const ProductPage = async ({ params }: { params: any }) => {
   const product = await fetchProductById((await params).id);
+  if (product === null) {
+    return notFound()
+  }
   return (
     <div className="min-h-screen bg-gray-50">
       <main className="max-w-7xl mx-auto px-4 py-8">
@@ -36,11 +40,11 @@ const ProductPage = async ({params}:{params:any}) => {
             <p className="text-2xl font-semibold text-blue-600">${product.price}</p>
             <p className="text-gray-600">{product.category.name}</p>
             <p className="text-gray-700">{product.description}</p>
-              <AddToCartButton productId={product.id}/>
+            <AddToCartButton productId={product.id} />
           </div>
         </div>
 
-        <SimilarProducts category={product.category.id} hiddenProductId={product.id}/>
+        <SimilarProducts category={product.category.id} hiddenProductId={product.id} />
       </main>
     </div>
   );
@@ -50,7 +54,11 @@ export default ProductPage;
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
   const product = await fetchProductById((await params).id);
-  
+  if (product === null) {
+    return {
+      title: 'Product not found | Pactkart',
+    };
+  }
   return {
     title: `${product.title} | Pactkart`,
   };
