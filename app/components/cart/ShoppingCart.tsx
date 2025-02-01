@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { ShoppingCart, Minus, Plus, Trash2 } from 'lucide-react';
+import {  Minus, Plus, Trash2 } from 'lucide-react';
 import { useGetProductByIdQuery } from '@/lib/features/product/productApiSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { removeFromCart, selectCartItems, updateQuantity } from '@/lib/features/cart/cartSlice';

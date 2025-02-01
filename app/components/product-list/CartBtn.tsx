@@ -3,7 +3,7 @@ import { loadCart, selectCartCount } from "@/lib/features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 export default function CartButton(){

@@ -1,7 +1,5 @@
 import { ICartItem } from "@/lib/config/model";
 import { createAppSlice } from "@/lib/createAppSlice";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { get } from "http";
 
 const CART_STORAGE_KEY = 'shopping-cart';
 

@@ -25,7 +25,7 @@ const ProductPage = async ({params}:{params:any}) => {
             <div className="flex gap-4">
               {product.images.slice(1).map((img, idx) => (
                 <div key={idx} className="w-20 h-20 bg-white rounded-lg overflow-hidden">
-                  <img src={checkUrl(img)} alt={`${product.title} ${idx + 2}`} className="w-full h-full object-cover" />
+                  <Image width={100} height={100} src={checkUrl(img)} alt={`${product.title} ${idx + 2}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>

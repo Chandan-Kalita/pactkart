@@ -58,7 +58,7 @@ export function checkUrl(url:string){
     try {
         const _ = new URL(url)
         return url
-    } catch (error) {
+    } catch (_) {
         return "https://placehold.co/400x400.png"
     }
 }

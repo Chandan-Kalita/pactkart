@@ -1,11 +1,8 @@
 'use client'
 
 import { useGetCategoriesQuery } from "@/lib/features/category/categoryApiSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useFilterState } from "@/lib/hooks/useFilterState";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 
 export default function Sidebar() {
   const { filters, updateFilters } = useFilterState()

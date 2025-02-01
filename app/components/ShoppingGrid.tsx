@@ -1,7 +1,6 @@
 import Sidebar from "./product-list/Sidebar";
 import ProductCard from "./ProductCard/ProductCard";
-import { BACKEND_URL } from "@/lib/config/endpoints";
-import { FilterState, IProduct } from "@/lib/config/model";
+import { FilterState } from "@/lib/config/model";
 import { Pagination } from "./product-list/Pagination";
 import { fetchProducts } from "@/lib/utils/dataSource";
 
