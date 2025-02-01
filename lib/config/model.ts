@@ -1,5 +1,3 @@
-import { IFilterSliceState } from "../features/filter/filterSlice";
-
 export interface ICategory {
     id: number;
     name: string;
@@ -15,10 +13,10 @@ export interface IProduct {
     images: string[]
 }
 
-
-export interface HomePageSearchParams {
-    searchParams: Promise<{ page: string, searchText:string,category:string,priceMin:string,priceMax:string }>
+export interface FilterState {
+    page: number
+    searchText: string
+    category: number
+    priceMin: number
+    priceMax: number
 }
-
-
-export type ISearchFormData = Omit<IFilterSliceState, "page">

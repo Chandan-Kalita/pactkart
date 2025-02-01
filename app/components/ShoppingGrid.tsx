@@ -1,8 +1,8 @@
 import Sidebar from "./product-list/Sidebar";
 import ProductCard from "./ProductCard/ProductCard";
 import { BACKEND_URL } from "@/lib/config/endpoints";
-import { HomePageSearchParams, IProduct } from "@/lib/config/model";
-import { Paginations } from "./product-list/Pagination";
+import { FilterState, IProduct } from "@/lib/config/model";
+import { Pagination } from "./product-list/Pagination";
 
 const fetchProducts = async ({page, category, priceMax, priceMin, searchText}:{page:string, category?:string, priceMax?:string, priceMin?:string, searchText?:string}) => {
   const queries = new URLSearchParams()
@@ -28,10 +28,10 @@ const fetchProducts = async ({page, category, priceMax, priceMin, searchText}:{p
   return products;
 }
 
-const ProductListingPage =async ({searchParams}:HomePageSearchParams) => {
+const ProductListingPage =async ({searchParams}:{searchParams:FilterState}) => {
   const {page, category, priceMax, priceMin, searchText} = await searchParams
 
-  const products = await fetchProducts({page: page, category, priceMax, priceMin, searchText});
+  const products = await fetchProducts({page: page.toString(), category:category?.toString() || undefined, priceMax: priceMax?.toString()||undefined, priceMin: priceMin?.toString()||undefined, searchText});
 
 
 
@@ -48,7 +48,7 @@ const ProductListingPage =async ({searchParams}:HomePageSearchParams) => {
           </div>
 
           <div className="mt-6 flex justify-center space-x-2">
-            <Paginations/>
+            <Pagination totalPages={5}/>
             <span className="px-3 py-1">...</span>
           </div>
         </main>

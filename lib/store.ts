@@ -2,10 +2,9 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { counterSlice } from "./features/counter/counterSlice";
 import { quotesApiSlice } from "./features/quotes/quotesApiSlice";
-import { filterSlice } from "./features/filter/filterSlice";
 import { categoryApiSlice } from "./features/category/categoryApiSlice";
 
-const rootReducer = combineSlices(counterSlice, quotesApiSlice, filterSlice, categoryApiSlice);
+const rootReducer = combineSlices(counterSlice, quotesApiSlice, categoryApiSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const makeStore = () => {
