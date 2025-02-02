@@ -2,6 +2,7 @@
 
 import { useGetCategoriesQuery } from "@/lib/features/category/categoryApiSlice";
 import { useFilterState } from "@/lib/hooks/useFilterState";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 export default function Sidebar() {
@@ -68,6 +69,12 @@ export default function Sidebar() {
           <button type="submit" className=" w-full py-2 px-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors">
             Apply filter
           </button>
+          <Link
+            href="/"
+            className="w-full py-2 px-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors text-center block mt-5"
+          >
+            Reset filter
+          </Link>
         </div>
       </form>
     </aside>
