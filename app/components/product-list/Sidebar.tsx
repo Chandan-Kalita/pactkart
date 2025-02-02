@@ -50,14 +50,14 @@ export default function Sidebar() {
         </div>
 
         <div className="space-y-2 mb-6">
-          <h3 className="text-lg font-semibold">Price from</h3>
+          <h3 className="text-lg font-semibold">Price from ( minimum $1 )</h3>
           <input
             type="number"
             placeholder="Price from"
             className="w-full p-2 border rounded-lg"
             {...register("priceMin")}
           />
-          <h3 className="text-lg font-semibold">Price to</h3>
+          <h3 className="text-lg font-semibold">Price to ( minimum $1 )</h3>
           <input
             type="number"
             placeholder="Price to"
