@@ -7,21 +7,21 @@ import Header from "./components/Header";
 
 interface Props {
   readonly children: ReactNode;
+  readonly path: string;
 }
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children, path }: Props) {
   return (
     <StoreProvider>
       <html lang="en">
         <body>
-            <main className={styles.main}>
+          <main className={styles.main}>
             <div className="min-h-screen bg-gray-100 p-4 w-full">
-      {/* Header */}
-      <Header/>
+              <Header path={path} />
 
               {children}
-</div>              
-              </main>
+            </div>
+          </main>
         </body>
       </html>
     </StoreProvider>

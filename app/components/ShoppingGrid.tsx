@@ -1,8 +1,9 @@
 import Sidebar from "./product-list/Sidebar";
-import ProductCard from "./ProductCard/ProductCard";
+import ProductCard from "./product-card/ProductCard";
 import { FilterState } from "@/lib/config/model";
 import { Pagination } from "./product-list/Pagination";
 import { fetchProducts } from "@/lib/utils/dataSource";
+import ProductGrid from "./search-page/ProductGrid";
 
 
 
@@ -19,11 +20,7 @@ const ProductListingPage = async ({ searchParams }: { searchParams: FilterState 
         <Sidebar />
 
         <main className="flex-1">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductGrid products={products} isLoading={false} />
 
           <div className="mt-6 flex justify-center space-x-2">
             <Pagination totalPages={5} />

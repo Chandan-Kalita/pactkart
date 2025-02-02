@@ -3,8 +3,9 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { categoryApiSlice } from "./features/category/categoryApiSlice";
 import { cartSlice } from "./features/cart/cartSlice";
 import { productApiSlice } from "./features/product/productApiSlice";
+import { searchProductSlice } from "./features/product/productSearchSlice";
 
-const rootReducer = combineSlices( categoryApiSlice, cartSlice, productApiSlice);
+const rootReducer = combineSlices(categoryApiSlice, cartSlice, productApiSlice, searchProductSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const makeStore = () => {

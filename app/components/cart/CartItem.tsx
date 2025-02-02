@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { useGetProductByIdQuery } from '@/lib/features/product/productApiSlice';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../product-card/ProductCard';
 import { IProduct } from '@/lib/config/model';
 
 
