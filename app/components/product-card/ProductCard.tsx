@@ -5,7 +5,7 @@ import Link from "next/link";
 
 
 
-export default function ProductCard({ product }: { product: IProduct }) {    
+export default function ProductCard({ product }: { product: IProduct }) {
     return (
         <Link key={product.id} href={`/product/${product.id}`} passHref>
             <div className="bg-white rounded-lg shadow-sm overflow-hidden h-500px">
@@ -16,6 +16,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
                         height={100}
                         alt={product.title}
                         className="object-cover w-full h-full"
+                        priority
                     />
                 </div>
                 <div className="p-4">

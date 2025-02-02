@@ -42,8 +42,6 @@ export const cartSlice = createAppSlice({
     ),
     addToCart: create.asyncThunk(
       async (item: number, { getState }) => {
-        console.log("Added to cart", item);
-
         const state = (getState() as { cart: CartState }).cart;
 
         const existingItem = state.cartItems.find(
@@ -88,8 +86,6 @@ export const cartSlice = createAppSlice({
 
     updateQuantity: create.asyncThunk(
       async ({ itemId, quantity }: { itemId: number; quantity: number }, { getState }) => {
-        console.log("Updated quantity", itemId, quantity);
-
         const state = (getState() as { cart: CartState }).cart;
         const updatedCart = state.cartItems.map(item =>
           item.productId === itemId

@@ -42,7 +42,6 @@ export const fetchProducts = async ({ page, category, priceMax, priceMin, }: { p
   }
 
   const url = `${BACKEND_URL}/products?limit=12&${queries.toString()}`
-  console.log(url);
 
   const res = await fetch(url);
   const products = await res.json() as IProduct[];
