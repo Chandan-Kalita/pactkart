@@ -4,10 +4,9 @@ import { useMemo, useCallback } from 'react'
 
 interface FilterState {
   page: number
-  searchText: string
   category: number
-  priceMin: number
-  priceMax: number
+  priceMin: number | null
+  priceMax: number | null
 }
 
 export function useFilterState() {
@@ -17,16 +16,15 @@ export function useFilterState() {
   // Get current filters from URL
   const currentFilters = useMemo((): FilterState => ({
     page: Number(searchParams.get('page')) || 1,
-    searchText: searchParams.get('searchText') || '',
     category: Number(searchParams.get('category')) || 0,
-    priceMin: Number(searchParams.get('priceMin')) || 0,
-    priceMax: Number(searchParams.get('priceMax')) || 0
+    priceMin: Number(searchParams.get('priceMin')) || null,
+    priceMax: Number(searchParams.get('priceMax')) || null
   }), [searchParams])
 
   // Update filters
   const updateFilters = useCallback((updates: Partial<FilterState>) => {
     const newParams = new URLSearchParams(searchParams)
-    
+
     // Update only changed values
     Object.entries(updates).forEach(([key, value]) => {
       if (value) {
@@ -42,6 +40,6 @@ export function useFilterState() {
 
   return {
     filters: currentFilters,
-    updateFilters
+    updateFilters,
   }
 }

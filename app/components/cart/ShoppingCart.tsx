@@ -31,7 +31,6 @@ const ShoppingCartPage = () => {
         <div className="lg:col-span-3 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {cartItems.map((item) => {
             const product = cartItemDetails.find((p) => p.id === item.productId);
-            if (!product) return null;
             return <CartItem
               quantity={item.quantity}
               product={product}

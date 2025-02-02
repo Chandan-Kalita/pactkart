@@ -6,11 +6,11 @@ import { fetchProducts } from "@/lib/utils/dataSource";
 
 
 
-const ProductListingPage =async ({searchParams}:{searchParams:FilterState}) => {
-  const {page, category, priceMax, priceMin, searchText} = await searchParams
+const ProductListingPage = async ({ searchParams }: { searchParams: FilterState }) => {
+  const { page, category, priceMax, priceMin } = await searchParams
 
-  const products = await fetchProducts({page: page?.toString() || '1', category:category?.toString() || undefined, priceMax: priceMax?.toString()||undefined, priceMin: priceMin?.toString()||undefined, searchText});
-  
+  const products = await fetchProducts({ page: page?.toString() || '1', category: category?.toString() || undefined, priceMax: priceMax?.toString() || undefined, priceMin: priceMin?.toString() || undefined });
+
 
 
   return (
@@ -26,7 +26,7 @@ const ProductListingPage =async ({searchParams}:{searchParams:FilterState}) => {
           </div>
 
           <div className="mt-6 flex justify-center space-x-2">
-            <Pagination totalPages={5}/>
+            <Pagination totalPages={5} />
             <span className="px-3 py-1">...</span>
           </div>
         </main>

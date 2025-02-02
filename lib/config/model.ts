@@ -15,13 +15,12 @@ export interface IProduct {
 
 export interface FilterState {
     page: number
-    searchText: string
     category: number
     priceMin: number
     priceMax: number
 }
 
-export interface ICartItem{
+export interface ICartItem {
     productId: number
     quantity: number
 }

@@ -2,33 +2,28 @@
 
 import { useGetCategoriesQuery } from "@/lib/features/category/categoryApiSlice";
 import { useFilterState } from "@/lib/hooks/useFilterState";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function Sidebar() {
   const { filters, updateFilters } = useFilterState()
-  const { register, handleSubmit } = useForm({
-    defaultValues: filters // Initialize form with current URL values
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: filters
   })
 
   const { data: categories, isLoading, isError } = useGetCategoriesQuery()
 
-  const onSearch = (data:any) => {
+  const onSearch = (data: any) => {
     updateFilters({
       ...data,
-      page: 1 // Reset to first page on new search
+      page: 1
     })
   }
+
   return (
     <aside className="w-full h-[100%] md:w-64 bg-white rounded-lg shadow-sm p-4">
       <form onSubmit={handleSubmit(onSearch)}>
         <div className="mb-6">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full p-2 border rounded-lg mb-4"
-            {...register("searchText")}
-          />
-
+          <h3 className="text-lg font-semibold">Categories</h3>
           <div className="space-y-2">
             {
               isLoading ? (
@@ -54,12 +49,14 @@ export default function Sidebar() {
         </div>
 
         <div className="space-y-2 mb-6">
+          <h3 className="text-lg font-semibold">Price from</h3>
           <input
             type="number"
             placeholder="Price from"
             className="w-full p-2 border rounded-lg"
             {...register("priceMin")}
           />
+          <h3 className="text-lg font-semibold">Price to</h3>
           <input
             type="number"
             placeholder="Price to"

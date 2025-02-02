@@ -10,7 +10,7 @@ interface CartItemProps {
     quantity: number;
     onQuantityChange: (quantity: number) => void;
     onRemove: () => void;
-    product: IProduct;
+    product?: IProduct;
 }
 
 export const CartItem: React.FC<CartItemProps> = ({ quantity, product, onQuantityChange, onRemove }) => {
@@ -23,7 +23,10 @@ export const CartItem: React.FC<CartItemProps> = ({ quantity, product, onQuantit
 
     return (
         <div className="flex flex-col p-4">
-            <ProductCard product={product} />
+            {
+                product ? <ProductCard product={product} /> : <p>Deleted item</p>
+            }
+
 
             <div className="flex items-center gap-3 mt-auto">
                 <button onClick={() => handleQuantityChange(-1)} className="p-1 hover:bg-gray-100 rounded">

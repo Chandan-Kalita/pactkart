@@ -27,12 +27,10 @@ export const fetchProductById = async (id: string) => {
  * @param searchText Search text
  * @returns IProducts[]
  */
-export const fetchProducts = async ({ page, category, priceMax, priceMin, searchText }: { page: string, category?: string, priceMax?: string, priceMin?: string, searchText?: string }) => {
+export const fetchProducts = async ({ page, category, priceMax, priceMin, }: { page: string, category?: string, priceMax?: string, priceMin?: string }) => {
   const queries = new URLSearchParams()
   queries.append('offset', ((isNaN(Number(page)) ? 0 : Number(page) - 1) * 12).toString())
-  if (searchText) {
-    queries.append('title', searchText)
-  }
+
   if (category) {
     queries.append('categoryId', category)
   }
